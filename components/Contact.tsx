@@ -1,0 +1,51 @@
+'use client'
+
+import { motion } from 'framer-motion'
+
+export default function Contact() {
+  return (
+    <section id="contact" className="py-24 border-t border-white/5">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto"
+        >
+          <div className="font-mono text-xs text-violet-400 mb-4">// contact</div>
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
+            Open to opportunities
+          </h2>
+          <p className="text-slate-400 text-lg mb-10">
+            Looking for a QA engineer who ships tools, not just reports?
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="mailto:your@email.com"
+              className="flex items-center gap-2 px-6 py-3 rounded bg-violet-600 hover:bg-violet-500 text-white font-mono text-sm transition-colors"
+            >
+              <span>✉</span>
+              Email me
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-2 px-6 py-3 rounded border border-white/10 hover:border-violet-500/40 text-slate-300 hover:text-white font-mono text-sm transition-all"
+            >
+              <span>in</span>
+              LinkedIn
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-2 px-6 py-3 rounded border border-white/10 hover:border-violet-500/40 text-slate-300 hover:text-white font-mono text-sm transition-all"
+            >
+              <span>⊛</span>
+              GitHub
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
