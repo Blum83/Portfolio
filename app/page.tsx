@@ -1,6 +1,7 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import Stats from '@/components/Stats'
+import AiQa from '@/components/AiQa'
 import Tools from '@/components/Tools'
 import Skills from '@/components/Skills'
 import Contact from '@/components/Contact'
@@ -12,6 +13,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <Stats />
+      <AiQa />
       <Tools />
       <Skills />
       <Contact />

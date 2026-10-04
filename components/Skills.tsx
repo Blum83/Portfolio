@@ -10,25 +10,28 @@ interface SkillGroup {
 
 const skillGroups: SkillGroup[] = [
   {
+    title: 'AI & Agents',
+    icon: '✦',
+    skills: [
+      { name: 'Claude Code', primary: true },
+      { name: 'MCP servers', primary: true },
+      { name: 'Sub-agents & skills', primary: true },
+      { name: 'Hooks & guardrails' },
+      { name: 'Prompt engineering' },
+      { name: 'LLM cost analysis' },
+    ],
+  },
+  {
     title: 'Testing',
     icon: '◈',
     skills: [
       { name: 'Playwright', primary: true },
-      { name: 'Postman', primary: true },
       { name: 'API Testing', primary: true },
+      { name: 'Postman/Newman', primary: true },
       { name: 'Manual QA' },
-      { name: 'Mobile Testing' },
-      { name: 'E2E Testing' },
-    ],
-  },
-  {
-    title: 'Tools',
-    icon: '⬡',
-    skills: [
-      { name: 'Jira', primary: true },
-      { name: 'Confluence' },
-      { name: 'Git', primary: true },
-      { name: 'Chrome DevTools', primary: true },
+      { name: 'Mobile (Android/iOS)' },
+      { name: 'Electron' },
+      { name: 'k6/Gatling' },
       { name: 'Lighthouse' },
     ],
   },
@@ -37,22 +40,25 @@ const skillGroups: SkillGroup[] = [
     icon: '◎',
     skills: [
       { name: 'TypeScript', primary: true },
-      { name: 'JavaScript', primary: true },
-      { name: 'Node.js', primary: true },
-      { name: 'HTML/CSS' },
-      { name: 'REST API' },
+      { name: 'JavaScript/Node.js', primary: true },
+      { name: 'SQL/PostgreSQL', primary: true },
+      { name: 'Python' },
+      { name: 'Bash' },
+      { name: 'REST APIs' },
     ],
   },
   {
-    title: 'Domains',
-    icon: '▲',
+    title: 'Tools & Infra',
+    icon: '⬡',
     skills: [
-      { name: 'Web', primary: true },
-      { name: 'Mobile' },
-      { name: 'API', primary: true },
-      { name: 'Desktop Apps' },
-      { name: 'Performance', primary: true },
-      { name: 'Load Testing', primary: true },
+      { name: 'Qase', primary: true },
+      { name: 'Jira', primary: true },
+      { name: 'GitHub Actions', primary: true },
+      { name: 'Confluence' },
+      { name: 'Git' },
+      { name: 'Docker' },
+      { name: 'Grafana' },
+      { name: 'Chrome DevTools/CDP' },
     ],
   },
 ]
@@ -67,7 +73,7 @@ export default function Skills() {
             What I work with
           </h2>
           <p className="text-slate-400 max-w-xl">
-            A broad toolkit built over 4+ years across web, mobile, API, and performance testing.
+            A toolkit built over 5+ years of testing web, desktop, mobile and APIs, now extended with AI agents.
           </p>
         </div>
 

@@ -7,21 +7,20 @@ interface StatItem {
   numericValue: number | null
   label: string
   suffix?: string
+  note?: string
   infinite?: boolean
 }
 
 const stats: StatItem[] = [
-  { numericValue: 4.5, label: 'Years Experience', suffix: ' yrs' },
-  { numericValue: 4, label: 'Tools Built' },
-  { numericValue: 3, label: 'Testing Domains' },
+  { numericValue: 5, label: 'Yrs in QA', suffix: '+' },
+  { numericValue: 6, label: 'Tools Built' },
+  { numericValue: 3, label: 'Platforms', note: 'Web · Desktop · Mobile' },
   { numericValue: null, label: 'Bugs Caught', infinite: true },
 ]
 
-function AnimatedValue({ value, suffix = '', isFloat = false }: { value: number; suffix?: string; isFloat?: boolean }) {
+function AnimatedValue({ value, suffix = '' }: { value: number; suffix?: string }) {
   const motionVal = useMotionValue(0)
-  const displayed = useTransform(motionVal, (v) =>
-    isFloat ? v.toFixed(1) + suffix : Math.round(v).toString() + suffix
-  )
+  const displayed = useTransform(motionVal, (v) => Math.round(v).toString() + suffix)
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true })
 
@@ -53,20 +52,17 @@ export default function Stats() {
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className={`py-10 px-6 text-center ${i < stats.length - 1 ? 'border-r border-white/5' : ''}`}
+              className={`py-10 px-6 text-center border-white/5 ${i % 2 === 0 ? 'border-r' : i < stats.length - 1 ? 'md:border-r' : ''} ${i < 2 ? 'border-b md:border-b-0' : ''}`}
             >
               <div className="font-mono text-3xl font-bold text-white mb-1">
                 {stat.infinite ? (
                   <span>∞</span>
                 ) : (
-                  <AnimatedValue
-                    value={stat.numericValue!}
-                    suffix={stat.suffix}
-                    isFloat={stat.numericValue === 4.5}
-                  />
+                  <AnimatedValue value={stat.numericValue!} suffix={stat.suffix} />
                 )}
               </div>
               <div className="font-mono text-xs text-slate-500 uppercase tracking-wider">{stat.label}</div>
+              {stat.note && <div className="font-mono text-[11px] text-slate-600 mt-1">{stat.note}</div>}
             </motion.div>
           ))}
         </div>

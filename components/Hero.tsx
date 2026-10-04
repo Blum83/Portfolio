@@ -11,6 +11,28 @@ const fadeUp = {
   }),
 }
 
+const checks = [
+  'UI flow verified (screenshots)',
+  'DB state matches expected',
+  'No errors in service logs',
+  'Side-effect risks: 0 blocking',
+]
+
+function JsonList({ items }: { items: string[] }) {
+  return (
+    <>
+      [
+      {items.map((item, i) => (
+        <span key={item}>
+          <span className="text-emerald-400">&quot;{item}&quot;</span>
+          {i < items.length - 1 && ', '}
+        </span>
+      ))}
+      ]
+    </>
+  )
+}
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-16">
@@ -26,7 +48,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded border border-violet-500/30 bg-violet-500/10"
             >
               <span className="text-violet-400 font-mono text-xs">▸</span>
-              <span className="text-violet-300 font-mono text-xs tracking-wider uppercase">QA Engineer</span>
+              <span className="text-violet-300 font-mono text-xs tracking-wider uppercase">AI-Augmented QA Engineer</span>
             </motion.div>
 
             <motion.h1
@@ -48,7 +70,7 @@ export default function Hero() {
               animate="show"
               className="text-slate-400 text-lg leading-relaxed max-w-lg"
             >
-              I build automation frameworks, performance tooling, and browser extensions that make quality a first-class citizen — not an afterthought.
+              I&apos;m Valentyn, a QA engineer with 5+ years in web, desktop and mobile testing. I build AI agents, MCP servers and Playwright automation that verify every change with evidence, not guesses.
             </motion.p>
 
             <motion.div
@@ -59,10 +81,10 @@ export default function Hero() {
               className="flex flex-wrap gap-4 pt-2"
             >
               <a
-                href="#tools"
+                href="#ai-qa"
                 className="px-6 py-3 rounded bg-violet-600 hover:bg-violet-500 text-white font-mono text-sm transition-colors"
               >
-                See my tools
+                See what I build
               </a>
               <a
                 href="#contact"
@@ -97,34 +119,33 @@ export default function Hero() {
                 <div className="text-slate-500">$ cat experience.json</div>
                 <div className="text-slate-300 mt-2">{`{`}</div>
                 <div className="pl-4 text-slate-400">
-                  <span className="text-violet-400">&quot;role&quot;</span>: <span className="text-emerald-400">&quot;QA Engineer&quot;</span>,
+                  <span className="text-violet-400">&quot;role&quot;</span>: <span className="text-emerald-400">&quot;AI-Augmented QA&quot;</span>,
                 </div>
                 <div className="pl-4 text-slate-400">
-                  <span className="text-violet-400">&quot;experience&quot;</span>: <span className="text-orange-400">&quot;4.5 years&quot;</span>,
+                  <span className="text-violet-400">&quot;experience&quot;</span>: <span className="text-orange-400">&quot;5+ years&quot;</span>,
                 </div>
                 <div className="pl-4 text-slate-400">
-                  <span className="text-violet-400">&quot;tools_built&quot;</span>: <span className="text-orange-400">4</span>,
+                  <span className="text-violet-400">&quot;stack&quot;</span>: <JsonList items={['claude-code', 'mcp', 'playwright']} />,
                 </div>
                 <div className="pl-4 text-slate-400">
-                  <span className="text-violet-400">&quot;domains&quot;</span>: [<span className="text-emerald-400">&quot;web&quot;</span>, <span className="text-emerald-400">&quot;api&quot;</span>, <span className="text-emerald-400">&quot;performance&quot;</span>],
+                  <span className="text-violet-400">&quot;platforms&quot;</span>: <JsonList items={['web', 'desktop', 'mobile', 'api']} />,
                 </div>
                 <div className="pl-4 text-slate-400">
                   <span className="text-violet-400">&quot;status&quot;</span>: <span className="text-emerald-400">&quot;available&quot;</span>
                 </div>
                 <div className="text-slate-300">{`}`}</div>
 
-                <div className="mt-4 text-slate-500">$ npx playwright test</div>
-                <div className="text-slate-400 mt-1">Running 47 tests using 4 workers</div>
+                <div className="mt-4 text-slate-500">$ claude /qa-task TASK-1042</div>
+                <div className="text-slate-400 mt-1">Checking 6 acceptance criteria with 3 agents</div>
                 <div className="mt-1 space-y-0.5">
-                  {[200, 450, 612].map((ms, i) => (
-                    <div key={i} className="text-emerald-400">
-                      {'  '}✓ test suite {i + 1} ({ms}ms)
+                  {checks.map((check) => (
+                    <div key={check} className="text-emerald-400">
+                      {'  '}✓ {check}
                     </div>
                   ))}
-                  <div className="text-emerald-400">{'  '}✓ ... 44 more passing</div>
                 </div>
                 <div className="mt-2 text-emerald-400 font-semibold">
-                  47 passed (12s)
+                  verdict: PASS · evidence attached to Jira
                 </div>
                 <div className="mt-3 flex items-center gap-1">
                   <span className="text-slate-500">$</span>

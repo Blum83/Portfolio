@@ -6,7 +6,7 @@ export default function Footer() {
           Built with ♥ and too much Playwright
         </p>
         <p className="font-mono text-sm text-slate-600">
-          QA Engineer · 2026
+          Valentyn Korobeinikov · AI-Augmented QA Engineer · 2026
         </p>
       </div>
     </footer>

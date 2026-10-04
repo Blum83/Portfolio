@@ -2,6 +2,13 @@
 
 import { motion } from 'framer-motion'
 
+const links = [
+  { label: 'AI QA', href: '#ai-qa' },
+  { label: 'Projects', href: '#tools' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Contact', href: '#contact' },
+]
+
 export default function Nav() {
   return (
     <motion.nav
@@ -13,18 +20,18 @@ export default function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="font-mono text-sm text-violet-400 hover:text-violet-300 transition-colors">
-          <span className="text-slate-500">~/</span>qa-engineer
+          <span className="text-slate-500">~/</span>valentyn
         </a>
 
         {/* Nav links — hidden on mobile */}
         <div className="hidden md:flex items-center gap-8">
-          {['Tools', 'Skills', 'Contact'].map((item) => (
+          {links.map((link) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={link.href}
+              href={link.href}
               className="font-mono text-sm text-slate-400 hover:text-white transition-colors"
             >
-              {item}
+              {link.label}
             </a>
           ))}
         </div>

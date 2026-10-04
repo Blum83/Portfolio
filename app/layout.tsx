@@ -15,9 +15,10 @@ const syne = Syne({
 })
 
 export const metadata: Metadata = {
-  title: 'QA Engineer Portfolio',
-  description: 'QA Engineer specializing in automation, performance testing, and building developer tools.',
-  keywords: ['QA Engineer', 'Test Automation', 'Playwright', 'Performance Testing', 'Portfolio'],
+  title: 'Valentyn Korobeinikov — AI-Augmented QA Engineer',
+  description:
+    'AI-Augmented QA Engineer with 5+ years in web, desktop, mobile and API testing. I build AI agents, MCP servers and Playwright automation that verify every change with evidence.',
+  keywords: ['QA Engineer', 'AI-Augmented QA', 'AI Agents', 'MCP', 'Claude Code', 'Playwright', 'Test Automation', 'Portfolio'],
 }
 
 export default function RootLayout({

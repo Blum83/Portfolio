@@ -7,12 +7,12 @@ export default function Tools() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="mb-14">
-          <div className="font-mono text-xs text-violet-400 mb-3">// tools</div>
+          <div className="font-mono text-xs text-violet-400 mb-3">// side projects</div>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
             Things I&apos;ve built
           </h2>
           <p className="text-slate-400 max-w-xl">
-            When the right tool doesn&apos;t exist, I build it. These are QA utilities I created to solve real problems on real projects.
+            When the right tool doesn&apos;t exist, I build it. Open-source QA utilities I made to solve real problems on real projects.
           </p>
         </div>
 

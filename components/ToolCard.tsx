@@ -63,31 +63,41 @@ export default function ToolCard({ tool, index }: ToolCardProps) {
       </ul>
 
       {/* Buttons */}
-      <div className="flex gap-3 pt-1">
-        <a
-          href={tool.liveUrl}
-          className="flex-1 py-2 rounded text-center font-mono text-xs font-medium transition-all border"
-          style={{
-            borderColor: `${tool.color}40`,
-            color: tool.color,
-            background: `${tool.color}10`,
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.background = `${tool.color}25`
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.background = `${tool.color}10`
-          }}
-        >
-          Try it live
-        </a>
-        <a
-          href={tool.githubUrl}
-          className="flex-1 py-2 rounded text-center font-mono text-xs font-medium border border-white/10 text-slate-400 hover:text-white hover:border-white/20 transition-all"
-        >
-          GitHub
-        </a>
-      </div>
+      {(tool.liveUrl || tool.githubUrl) && (
+        <div className="flex gap-3 pt-1">
+          {tool.liveUrl && (
+            <a
+              href={tool.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 py-2 rounded text-center font-mono text-xs font-medium transition-all border"
+              style={{
+                borderColor: `${tool.color}40`,
+                color: tool.color,
+                background: `${tool.color}10`,
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = `${tool.color}25`
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background = `${tool.color}10`
+              }}
+            >
+              {tool.liveLabel ?? 'Try it live'}
+            </a>
+          )}
+          {tool.githubUrl && (
+            <a
+              href={tool.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 py-2 rounded text-center font-mono text-xs font-medium border border-white/10 text-slate-400 hover:text-white hover:border-white/20 transition-all"
+            >
+              GitHub
+            </a>
+          )}
+        </div>
+      )}
     </motion.div>
   )
 }
