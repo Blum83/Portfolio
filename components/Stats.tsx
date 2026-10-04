@@ -2,21 +2,24 @@
 
 import { useRef, useEffect } from 'react'
 import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion'
+import { container } from './ui'
 
 interface StatItem {
   numericValue: number | null
   label: string
   suffix?: string
-  note?: string
   infinite?: boolean
 }
 
 const stats: StatItem[] = [
-  { numericValue: 5, label: 'Yrs in QA', suffix: '+' },
-  { numericValue: 6, label: 'Tools Built' },
-  { numericValue: 3, label: 'Platforms', note: 'Web · Desktop · Mobile' },
-  { numericValue: null, label: 'Bugs Caught', infinite: true },
+  { numericValue: 5, label: 'Years in QA', suffix: '+ yrs' },
+  { numericValue: 6, label: 'Tools built' },
+  { numericValue: 3, label: 'Platforms: Web · Desktop · Mobile' },
+  { numericValue: null, label: 'Bugs caught', infinite: true },
 ]
+
+// Dividers: 2×2 grid on mobile, single row of four on desktop
+const cellBorders = ['', 'border-l pl-5 lg:pl-8', 'lg:border-l lg:pl-8', 'border-l pl-5 lg:pl-8']
 
 function AnimatedValue({ value, suffix = '' }: { value: number; suffix?: string }) {
   const motionVal = useMotionValue(0)
@@ -43,29 +46,22 @@ export default function Stats() {
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section ref={ref} className="relative border-y border-white/5 bg-white/[0.02]">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className={`py-10 px-6 text-center border-white/5 ${i % 2 === 0 ? 'border-r' : i < stats.length - 1 ? 'md:border-r' : ''} ${i < 2 ? 'border-b md:border-b-0' : ''}`}
-            >
-              <div className="font-mono text-3xl font-bold text-white mb-1">
-                {stat.infinite ? (
-                  <span>∞</span>
-                ) : (
-                  <AnimatedValue value={stat.numericValue!} suffix={stat.suffix} />
-                )}
-              </div>
-              <div className="font-mono text-xs text-slate-500 uppercase tracking-wider">{stat.label}</div>
-              {stat.note && <div className="font-mono text-[11px] text-slate-600 mt-1">{stat.note}</div>}
-            </motion.div>
-          ))}
-        </div>
+    <section ref={ref} className={container}>
+      <div className="grid grid-cols-2 lg:grid-cols-4 border-y border-line py-2 lg:py-[34px]">
+        {stats.map((stat, i) => (
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, y: 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: i * 0.1, duration: 0.5 }}
+            className={`flex flex-col gap-2.5 py-6 pr-4 lg:py-0 border-line ${cellBorders[i]}`}
+          >
+            <div className="font-heading text-[32px] lg:text-[40px] font-bold leading-[1.1] text-ink">
+              {stat.infinite ? '∞' : <AnimatedValue value={stat.numericValue!} suffix={stat.suffix} />}
+            </div>
+            <div className="font-mono text-[10px] lg:text-[11px] leading-[1.6] text-muted">{stat.label}</div>
+          </motion.div>
+        ))}
       </div>
     </section>
   )

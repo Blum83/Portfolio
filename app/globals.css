@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-jetbrains: 'JetBrains Mono', monospace;
-  --font-syne: 'Syne', sans-serif;
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -17,9 +12,19 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id] {
+  scroll-margin-top: 112px;
+}
+
+@media (min-width: 1024px) {
+  section[id] {
+    scroll-margin-top: 81px;
+  }
+}
+
 body {
   background-color: #080c10;
-  color: #e2e8f0;
+  color: #eff1f6;
   font-family: var(--font-jetbrains), monospace;
   overflow-x: hidden;
 }

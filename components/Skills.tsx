@@ -1,17 +1,19 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { CheckCheck, CodeXml, Sparkles, Wrench, type LucideIcon } from 'lucide-react'
+import { Chip, SectionHeader, container } from './ui'
 
 interface SkillGroup {
   title: string
-  icon: string
+  icon: LucideIcon
   skills: { name: string; primary?: boolean }[]
 }
 
 const skillGroups: SkillGroup[] = [
   {
     title: 'AI & Agents',
-    icon: '✦',
+    icon: Sparkles,
     skills: [
       { name: 'Claude Code', primary: true },
       { name: 'MCP servers', primary: true },
@@ -23,7 +25,7 @@ const skillGroups: SkillGroup[] = [
   },
   {
     title: 'Testing',
-    icon: '◈',
+    icon: CheckCheck,
     skills: [
       { name: 'Playwright', primary: true },
       { name: 'API Testing', primary: true },
@@ -37,7 +39,7 @@ const skillGroups: SkillGroup[] = [
   },
   {
     title: 'Development',
-    icon: '◎',
+    icon: CodeXml,
     skills: [
       { name: 'TypeScript', primary: true },
       { name: 'JavaScript/Node.js', primary: true },
@@ -49,7 +51,7 @@ const skillGroups: SkillGroup[] = [
   },
   {
     title: 'Tools & Infra',
-    icon: '⬡',
+    icon: Wrench,
     skills: [
       { name: 'Qase', primary: true },
       { name: 'Jira', primary: true },
@@ -65,44 +67,33 @@ const skillGroups: SkillGroup[] = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 border-t border-white/5">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-14">
-          <div className="font-mono text-xs text-violet-400 mb-3">{'// skills'}</div>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
-            What I work with
-          </h2>
-          <p className="text-slate-400 max-w-xl">
-            A toolkit built over 5+ years of testing web, desktop, mobile and APIs, now extended with AI agents.
-          </p>
-        </div>
+    <section id="skills" className="pt-[72px] pb-16 lg:py-[104px]">
+      <div className={container}>
+        <SectionHeader
+          label="// skills"
+          title="What I work with"
+          intro="A toolkit built over 5+ years of testing web, desktop, mobile and APIs, now extended with AI agents."
+        />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-x-6">
           {skillGroups.map((group, gi) => (
             <motion.div
               key={group.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ delay: gi * 0.1, duration: 0.5 }}
-              className="rounded-xl border border-white/8 bg-[#0d1117] p-6"
+              transition={{ delay: (gi % 2) * 0.1, duration: 0.5 }}
+              className="flex flex-col gap-[22px] rounded-xl border border-line bg-surface p-6"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-violet-400 text-lg">{group.icon}</span>
-                <h3 className="font-heading text-lg font-semibold text-white">{group.title}</h3>
+              <div className="flex items-center gap-3">
+                <group.icon size={18} strokeWidth={1.75} className="text-accent-light shrink-0" />
+                <h3 className="font-heading text-[22px] font-bold text-ink">{group.title}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
-                  <span
-                    key={skill.name}
-                    className={`font-mono text-xs px-3 py-1.5 rounded border transition-colors ${
-                      skill.primary
-                        ? 'bg-violet-500/15 border-violet-500/30 text-violet-300'
-                        : 'bg-white/[0.04] border-white/8 text-slate-400'
-                    }`}
-                  >
+                  <Chip key={skill.name} primary={skill.primary}>
                     {skill.name}
-                  </span>
+                  </Chip>
                 ))}
               </div>
             </motion.div>

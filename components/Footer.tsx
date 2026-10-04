@@ -1,13 +1,11 @@
+import { container } from './ui'
+
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 py-8">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="font-mono text-sm text-slate-500">
-          Built with ♥ and too much Playwright
-        </p>
-        <p className="font-mono text-sm text-slate-600">
-          Valentyn Korobeinikov · AI-Augmented QA Engineer · 2026
-        </p>
+    <footer className={`${container} pt-14 pb-8 lg:pt-[72px]`}>
+      <div className="flex flex-col gap-3 border-t border-line pt-6 font-mono text-[10px] text-dim lg:flex-row lg:justify-between">
+        <p>© 2026 Valentyn Korobeinikov · AI-Augmented QA Engineer</p>
+        <p>{'// built with intent. tested with evidence.'}</p>
       </div>
     </footer>
   )
