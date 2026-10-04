@@ -68,7 +68,7 @@ export default function Skills() {
     <section id="skills" className="py-24 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-14">
-          <div className="font-mono text-xs text-violet-400 mb-3">// skills</div>
+          <div className="font-mono text-xs text-violet-400 mb-3">{'// skills'}</div>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
             What I work with
           </h2>

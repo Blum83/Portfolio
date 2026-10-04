@@ -56,7 +56,7 @@ export default function AiQa() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="mb-14">
-          <div className="font-mono text-xs text-violet-400 mb-3">// ai-augmented qa</div>
+          <div className="font-mono text-xs text-violet-400 mb-3">{'// ai-augmented qa'}</div>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
             What I build at work
           </h2>

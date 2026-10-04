@@ -20,7 +20,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto"
         >
-          <div className="font-mono text-xs text-violet-400 mb-4">// contact</div>
+          <div className="font-mono text-xs text-violet-400 mb-4">{'// contact'}</div>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
             Open to opportunities
           </h2>
